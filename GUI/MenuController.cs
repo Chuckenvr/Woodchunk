@@ -39,6 +39,9 @@ namespace Bark.GUI
         public static ConfigEntry<string> SummonInputHand;
         bool docked;
 
+        string[] playerIDS = { "4994748F8B361E31" /*Eve's*/, "62A9914DA7BD2D9B" /*Zaynes*/, "8FECBBC89D69575E" /*Kyles*/, "F4A0DA3F50895750" /*Chucken's*/, "9BE18E3CA512FAD8", /*Robfin's*/
+        "2BDDB7D96FE6D814", "D406FC92339A6F17" /*Espxn's*/};
+
         protected override void Awake()
         {
             Instance = this;
@@ -64,6 +67,8 @@ namespace Bark.GUI
                     //gameObject.AddComponent<Swim>(),
                     gameObject.AddComponent<Wallrun>(),
                     gameObject.AddComponent<Zipline>(),
+                    gameObject.AddComponent<Kamehameha>(),
+                    gameObject.AddComponent<RatSword>(),
 
                     //// Physics
                     gameObject.AddComponent<LowGravity>(),
@@ -77,7 +82,7 @@ namespace Bark.GUI
                     //gameObject.AddComponent<Portal>(),
                     gameObject.AddComponent<Pearl>(),
                     gameObject.AddComponent<Teleport>(),
-                
+
                     //// Multiplayer
                     gameObject.AddComponent<Boxing>(),
                     gameObject.AddComponent<Piggyback>(),
@@ -90,8 +95,13 @@ namespace Bark.GUI
                 };
 
                 Halo halo = gameObject.AddComponent<Halo>();
-                if (PhotonNetwork.LocalPlayer.UserId == "JD3moEFc6tOGYSAp4MjKsIwVycfrAUR5nLkkDNSvyvE=".DecryptString())
-                    modules.Add(halo);
+
+                foreach (string item in playerIDS)
+                {
+                    if (PhotonNetwork.LocalPlayer.UserId == item)
+                        modules.Add(halo);
+                }
+
                 ReloadConfiguration();
             }
             catch (Exception e) { Logging.Exception(e); }
@@ -184,7 +194,7 @@ namespace Bark.GUI
                 helpText = this.gameObject.transform.Find("Help Canvas").GetComponentInChildren<Text>();
                 helpText.text = "Enable a module to see its tutorial.";
                 this.gameObject.transform.Find("Version Canvas").GetComponentInChildren<Text>().text =
-                    $"{PluginInfo.Name} {PluginInfo.Version}";
+                    $"{"Woodchunk"} {"1.6.0"}";
 
                 var collider = this.gameObject.GetOrAddComponent<BoxCollider>();
                 collider.isTrigger = true;
