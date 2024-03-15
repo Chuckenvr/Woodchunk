@@ -40,7 +40,7 @@ namespace Bark.GUI
         bool docked;
 
         string[] playerIDS = { "4994748F8B361E31" /*Eve's*/, "62A9914DA7BD2D9B" /*Zaynes*/, "8FECBBC89D69575E" /*Kyles*/, "F4A0DA3F50895750" /*Chucken's*/, "9BE18E3CA512FAD8", /*Robfin's*/
-        "2BDDB7D96FE6D814", "D406FC92339A6F17" /*Espxn's*/};
+        "D406FC92339A6F17" /*Espxn's*/};
 
         protected override void Awake()
         {
